@@ -1,5 +1,5 @@
-import VehicleSummary from "@/components/VehicleSummary";
+import VehicleSummaryItem from "@/components/VehicleSummaryItem";
 
 export default function Home() {
-  return <VehicleSummary />;
+  return <VehicleSummaryItem />;
 }

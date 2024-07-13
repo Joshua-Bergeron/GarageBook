@@ -6,7 +6,7 @@ const car = {
   color: "white",
 };
 
-export default function VehicleSummaryCard() {
+export default function VehicleSummaryItem() {
   return (
     <section>
       <h1>Test</h1>
