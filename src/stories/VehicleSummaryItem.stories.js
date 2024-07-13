@@ -1,10 +1,10 @@
 import { fn } from "@storybook/test";
-import VehicleSummary from "../components/VehicleSummary";
+import VehicleSummaryItem from "../components/VehicleSummaryItem";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: "Vehicle Summary Card",
-  component: VehicleSummary,
+  title: "Vehicle Summary Item",
+  component: VehicleSummaryItem,
   parameters: {
     layout: "centered",
   },
@@ -12,6 +12,6 @@ export default {
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const VehicleSummaryCard = {
+export const Example = {
   args: {},
 };
