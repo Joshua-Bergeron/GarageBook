@@ -1,4 +1,3 @@
-import { jest } from "@jest/globals";
 import milesFormatter from "./milesFormatter";
 
 describe("Miles are formatted correctly", () => {
