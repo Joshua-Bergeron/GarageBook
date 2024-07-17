@@ -1,17 +1,7 @@
-import VehicleSummaryItem from "@/components/VehicleSummaryItem";
+import VehicleList from "@/components/VehicleList";
 import * as React from "react";
-
-const vehicle = {
-  make: "Toyota",
-  model: "Corolla",
-  year: "2003",
-  mileage: 178234,
-  color: "White",
-  value: "3000",
-  lastServiceDate: "05/16/2024",
-  lastServiceType: "Oil Change",
-};
+import { vehicleList } from "@/mocks/vehicleMocks";
 
 export default function Home() {
-  return <VehicleSummaryItem {...vehicle} />;
+  return <VehicleList vehicleList={vehicleList} />;
 }
