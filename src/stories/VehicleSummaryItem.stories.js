@@ -1,5 +1,5 @@
-import { fn } from "@storybook/test";
 import VehicleSummaryItem from "../components/VehicleSummaryItem";
+import { corolla, camry } from "@/mocks/vehicleMocks";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -13,24 +13,9 @@ export default {
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const WithAllInformation = {
-  args: {
-    make: "Toyota",
-    model: "Corolla",
-    year: 2003,
-    mileage: 178234,
-    color: "White",
-    lastServiceDate: "05/16/2024",
-    lastServiceType: "Oil Change",
-  },
+  args: corolla,
 };
 
 export const WithNoLastServiceDate = {
-  args: {
-    make: "Toyota",
-    model: "Camry",
-    year: 2017,
-    mileage: 78910,
-    color: "Silver",
-    lastServiceType: "",
-  },
+  args: camry,
 };
