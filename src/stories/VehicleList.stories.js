@@ -29,8 +29,6 @@ export const WithMultipleVehicles = {
         year: "2008",
         mileage: 84772,
         color: "Black",
-        lastServiceDate: "01/23/2023",
-        lastServiceType: "New Tires",
       },
       {
         make: "Honda",
