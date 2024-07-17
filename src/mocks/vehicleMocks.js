@@ -26,6 +26,13 @@ export const camry = {
 
 export const vehicleList = [
   {
+    make: "BMW",
+    model: "Z4",
+    year: "2008",
+    mileage: 84772,
+    color: "Black",
+  },
+  {
     make: "Toyota",
     model: "Corolla",
     year: "2003",
@@ -33,13 +40,6 @@ export const vehicleList = [
     color: "White",
     lastServiceDate: "05/16/2024",
     lastServiceType: "Oil Change",
-  },
-  {
-    make: "BMW",
-    model: "Z4",
-    year: "2008",
-    mileage: 84772,
-    color: "Black",
   },
   {
     make: "Honda",
