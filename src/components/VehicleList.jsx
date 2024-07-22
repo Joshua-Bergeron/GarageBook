@@ -1,10 +1,10 @@
 import * as React from "react";
 import VehicleSummaryItem from "./VehicleSummaryItem";
-import { List, ListItem, Typography } from "@mui/material";
+import { List, ListItem, Typography, Stack, Box } from "@mui/material";
 
 function VehicleList({ vehicleList }) {
   return (
-    <List>
+    <Stack spacing={2} sx={{ ml: 5, mr: 5, mt: 5 }}>
       {vehicleList && vehicleList.length > 0 ? (
         vehicleList.map((vehicle, index) => {
           return (
@@ -21,7 +21,7 @@ function VehicleList({ vehicleList }) {
           );
         })
       ) : (
-        <ListItem>
+        <Box>
           <Typography
             color="text.secondary"
             align="center"
@@ -29,9 +29,9 @@ function VehicleList({ vehicleList }) {
           >
             No Vehicles To Display
           </Typography>
-        </ListItem>
+        </Box>
       )}
-    </List>
+    </Stack>
   );
 }
 
