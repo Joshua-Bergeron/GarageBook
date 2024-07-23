@@ -8,25 +8,7 @@ function Garage({ vehicleList }) {
   return (
     <Box>
       <GarageHeader />
-      <Box
-        display="flex"
-        justifyContent="center"
-        sx={{
-          width: "100%",
-          padding: 2,
-          backgroundColor: "#ffffff",
-          borderRadius: 2,
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: "1200px", // Adjust this value to make the flexbox wider
-          }}
-        >
-          <VehicleList vehicleList={vehicleList} />
-        </Box>
-      </Box>
+      <VehicleList vehicleList={vehicleList} />
     </Box>
   );
 }
