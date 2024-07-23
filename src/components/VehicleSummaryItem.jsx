@@ -38,7 +38,7 @@ const VehicleSummaryItem = ({
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         alignItems: "center",
-        gap: 2,
+        gap: 3,
       }}
     >
       <Avatar sx={{ width: 60, height: 60, fontSize: "1.5rem" }}>
