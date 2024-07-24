@@ -6,7 +6,7 @@ import GarageHeader from "./GarageHeader";
 
 function Garage({ vehicleList }) {
   return (
-    <Box>
+    <Box sx={{ ml: 5, mr: 5, mt: 2, pb: 2 }}>
       <GarageHeader />
       <VehicleList vehicleList={vehicleList} />
     </Box>

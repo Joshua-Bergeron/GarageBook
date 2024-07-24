@@ -4,7 +4,7 @@ import { Box, Typography, Stack, Button } from "@mui/material";
 function GarageHeader() {
   return (
     <Stack direction="row" width="100%" mb={2} alignItems="center">
-      <Typography variant="h3" align="left" sx={{ flexGrow: 1 }}>
+      <Typography variant="h4" align="left" sx={{ flexGrow: 1 }}>
         My Garage
       </Typography>
       <Box

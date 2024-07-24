@@ -4,7 +4,7 @@ import { List, ListItem, Typography, Stack, Box } from "@mui/material";
 
 function VehicleList({ vehicleList }) {
   return (
-    <Stack spacing={2} sx={{ ml: 5, mr: 5, mt: 5 }}>
+    <Stack spacing={2}>
       {vehicleList && vehicleList.length > 0 ? (
         vehicleList.map((vehicle, index) => {
           return (
