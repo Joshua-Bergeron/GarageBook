@@ -21,7 +21,7 @@ it("renders all data", () => {
   expect(
     screen.getByText("Last Service: 05/16/2024 - Oil Change")
   ).toBeInTheDocument();
-  expect(screen.getByTestId("maintenance-button")).toBeInTheDocument();
+  expect(screen.getByTestId("history-button")).toBeInTheDocument();
   expect(screen.getByTestId("settings-button")).toBeInTheDocument();
 });
 
@@ -39,7 +39,7 @@ it("calls function on maintenance button click", () => {
     />
   );
 
-  const maintenanceButton = screen.getByTestId("maintenance-button");
+  const maintenanceButton = screen.getByTestId("history-button");
   fireEvent.click(maintenanceButton);
   expect(console.log).toHaveBeenCalledTimes(1);
 });

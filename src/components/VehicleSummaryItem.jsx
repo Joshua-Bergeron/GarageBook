@@ -22,7 +22,7 @@ const VehicleSummaryItem = ({
   lastServiceDate,
   lastServiceType,
 }) => {
-  function handleAddMaintenanceClick() {
+  function handleViewHistoryClick() {
     console.log();
   }
 
@@ -77,10 +77,10 @@ const VehicleSummaryItem = ({
         <Button
           variant="contained"
           fullWidth
-          data-testid="maintenance-button"
-          onClick={handleAddMaintenanceClick}
+          data-testid="history-button"
+          onClick={handleViewHistoryClick}
         >
-          Add Maintenance
+          View History
         </Button>
 
         <IconButton

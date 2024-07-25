@@ -1,10 +1,14 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
-import VehicleList from "./VehicleList";
+import { render, screen } from "@testing-library/react";
 import { vehicleList } from "@/mocks/vehicleMocks";
+import Garage from "./Garage";
 
-it("renders each vehicle summary item as a list", () => {
-  render(<VehicleList vehicleList={vehicleList} />);
+it("renders garage header and vehicle summary list", () => {
+  render(<Garage vehicleList={vehicleList} />);
+
+  expect(screen.getByText("My Garage")).toBeInTheDocument();
+  expect(screen.getByTestId("export-button")).toBeInTheDocument();
+  expect(screen.getByTestId("new-vehicle-button")).toBeInTheDocument();
 
   expect(screen.getByText("Toyota Corolla")).toBeInTheDocument();
   expect(screen.getByText("2003 - White")).toBeInTheDocument();
