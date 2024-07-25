@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Box, Typography, Stack, Button } from "@mui/material";
 
-// add on button click handlers
-
 function GarageHeader() {
   function handleExportClick() {
     console.log();
