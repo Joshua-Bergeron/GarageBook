@@ -43,7 +43,7 @@ export const vehicleList = [
   },
   {
     make: "Honda",
-    model: "Civic Type R",
+    model: "Civic",
     year: "2023",
     mileage: 2102,
     color: "Blue",

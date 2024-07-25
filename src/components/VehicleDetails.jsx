@@ -1,9 +1,14 @@
 import * as React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 
 function VehicleDetails({ make, model, year, color }) {
   return (
-    <Grid item xs={6} sm={4} md={2}>
+    <Box
+      sx={{
+        flexDirection: "column",
+        flex: 0.5,
+      }}
+    >
       <Typography variant="h6" data-testid="make-model">
         {make} {model}
       </Typography>
@@ -14,7 +19,7 @@ function VehicleDetails({ make, model, year, color }) {
       >
         {year} - {color}
       </Typography>
-    </Grid>
+    </Box>
   );
 }
 
