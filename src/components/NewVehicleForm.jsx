@@ -3,7 +3,7 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { carMakes, carModels, carColors, years } from "@/mocks/vehicleData";
-import { Stack } from "@mui/material";
+import { Button, Grid, Box } from "@mui/material";
 
 function NewVehicleForm() {
   const [formData, setFormData] = useState({
@@ -23,71 +23,79 @@ function NewVehicleForm() {
   };
 
   return (
-    <Stack direction="column" spacing={3}>
-      <Stack direction="row" spacing={3}>
+    <Grid container spacing={3} justifyContent="center">
+      <Grid item xs={12} sm={6} md={4}>
         <Autocomplete
           disablePortal
           id="make-combo-box"
           options={carMakes}
           value={formData.make}
           onChange={handleChange("make")}
-          sx={{ width: 250 }}
           renderInput={(params) => (
-            <TextField {...params} label="Make" required />
+            <TextField {...params} label="Make" required fullWidth />
           )}
         />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
         <Autocomplete
           disablePortal
           id="model-combo-box"
           options={carModels}
           value={formData.model}
           onChange={handleChange("model")}
-          sx={{ width: 250 }}
           renderInput={(params) => (
-            <TextField {...params} label="Model" required />
+            <TextField {...params} label="Model" required fullWidth />
           )}
         />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
         <Autocomplete
           disablePortal
           id="year-combo-box"
           options={years}
           value={formData.year}
           onChange={handleChange("year")}
-          sx={{ width: 250 }}
           renderInput={(params) => (
-            <TextField {...params} label="Year" required />
+            <TextField {...params} label="Year" required fullWidth />
           )}
         />
-      </Stack>
-      <Stack direction="row" spacing={3}>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
         <TextField
           label="Mileage"
           value={formData.mileage}
           onChange={handleChange("mileage")}
-          sx={{ width: 250 }}
           required
+          fullWidth
         />
-
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
         <TextField
           label="License Plate"
           value={formData.licensePlate}
           onChange={handleChange("licensePlate")}
-          sx={{ width: 250 }}
           required
+          fullWidth
         />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4}>
         <Autocomplete
           disablePortal
           id="color-combo-box"
           options={carColors}
           value={formData.color}
           onChange={handleChange("color")}
-          sx={{ width: 250 }}
           renderInput={(params) => (
-            <TextField {...params} label="Color" required />
+            <TextField {...params} label="Color" required fullWidth />
           )}
         />
-      </Stack>
-    </Stack>
+      </Grid>
+      <Grid item xs={12} textAlign="center">
+        <Button variant="contained" sx={{ width: 300 }}>
+          Submit
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
 
