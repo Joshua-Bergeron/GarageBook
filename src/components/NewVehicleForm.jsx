@@ -38,7 +38,9 @@ function NewVehicleForm() {
           id="make-combo-box"
           data-testid="make-combo-box"
           options={carMakes}
-          isOptionEqualToValue={(option, value) => option.value === value}
+          isOptionEqualToValue={(option, value) =>
+            option === value || value === null
+          }
           value={formData.make}
           onChange={handleChange("make")}
           renderInput={(params) => (
