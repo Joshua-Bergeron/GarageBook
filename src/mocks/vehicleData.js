@@ -1,7 +1,3 @@
-export const years = Array.from(new Array(75), (val, index) =>
-  (new Date().getFullYear() - index).toString()
-);
-
 export const carMakes = [
   "Abarth",
   "Alfa Romeo",

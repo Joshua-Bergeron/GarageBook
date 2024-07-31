@@ -49,7 +49,7 @@ it("allows user to select from the model field", async () => {
   const option = await screen.findByText("Corolla");
   userEvent.click(option);
   await userEvent.click(input);
-  await delay(100);
+  await delay(150);
   expect(input).toHaveValue("Corolla");
 });
 
