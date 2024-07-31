@@ -80,7 +80,7 @@ const VehicleSummaryItem = ({
           data-testid="history-button"
           onClick={handleViewHistoryClick}
         >
-          View History
+          View Service History
         </Button>
 
         <IconButton
