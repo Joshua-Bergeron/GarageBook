@@ -1,14 +1,13 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { carMakes, carModels, carColors } from "@/mocks/vehicleData";
 import { Button, Grid } from "@mui/material";
+import { calculateYears } from "@/utils/calculateYears";
 
 function NewVehicleForm() {
-  const years = Array.from(new Array(75), (val, index) =>
-    (new Date().getFullYear() - index).toString()
-  );
+  const years = useMemo(() => calculateYears(), []);
 
   const [formData, setFormData] = useState({
     make: null,
