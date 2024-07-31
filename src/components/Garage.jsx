@@ -1,6 +1,5 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import { Box, Typography, Stack, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import VehicleList from "./VehicleList";
 import GarageHeader from "./GarageHeader";
 
