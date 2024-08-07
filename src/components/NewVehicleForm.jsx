@@ -9,7 +9,7 @@ import { calculateYears } from "@/utils/calculateYears";
 function NewVehicleForm() {
   const years = useMemo(() => calculateYears(), []);
 
-  const [formData, setFormData] = useState({
+  const [vehicleData, setVehicleData] = useState({
     make: null,
     model: null,
     year: null,
@@ -19,8 +19,8 @@ function NewVehicleForm() {
   });
 
   const handleChange = (field) => (event, value) => {
-    setFormData({
-      ...formData,
+    setVehicleData({
+      ...vehicleData,
       [field]: value !== undefined ? value : event.target.value,
     });
   };
@@ -40,7 +40,7 @@ function NewVehicleForm() {
           isOptionEqualToValue={(option, value) =>
             option === value || value === null
           }
-          value={formData.make}
+          value={vehicleData.make}
           onChange={handleChange("make")}
           renderInput={(params) => (
             <TextField {...params} label="Make" required fullWidth />
@@ -53,7 +53,7 @@ function NewVehicleForm() {
           id="model-combo-box"
           data-testid="model-combo-box"
           options={carModels}
-          value={formData.model}
+          value={vehicleData.model}
           onChange={handleChange("model")}
           renderInput={(params) => (
             <TextField {...params} label="Model" required fullWidth />
@@ -66,7 +66,7 @@ function NewVehicleForm() {
           id="year-combo-box"
           data-testid="year-combo-box"
           options={years}
-          value={formData.year}
+          value={vehicleData.year}
           onChange={handleChange("year")}
           renderInput={(params) => (
             <TextField {...params} label="Year" required fullWidth />
@@ -77,7 +77,7 @@ function NewVehicleForm() {
         <TextField
           label="Mileage"
           data-testid="mileage-field"
-          value={formData.mileage}
+          value={vehicleData.mileage}
           onChange={handleChange("mileage")}
           required
           fullWidth
@@ -87,7 +87,7 @@ function NewVehicleForm() {
         <TextField
           label="License Plate"
           data-testid="license-field"
-          value={formData.licensePlate}
+          value={vehicleData.licensePlate}
           onChange={handleChange("licensePlate")}
           required
           fullWidth
@@ -99,7 +99,7 @@ function NewVehicleForm() {
           id="color-combo-box"
           data-testid="color-combo-box"
           options={carColors}
-          value={formData.color}
+          value={vehicleData.color}
           onChange={handleChange("color")}
           renderInput={(params) => (
             <TextField {...params} label="Color" required fullWidth />
