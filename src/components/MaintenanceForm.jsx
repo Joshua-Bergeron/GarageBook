@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { Autocomplete, Grid, Button, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { maintenanceTypes } from "@/mocks/vehicleData";
+import dayjs from "dayjs";
 
 function MaintenanceForm() {
   const [maintenanceData, setMaintenanceData] = useState({
@@ -15,11 +16,43 @@ function MaintenanceForm() {
     notes: "",
   });
 
+  const [formErrors, setFormErrors] = useState({});
+
+  const validateForm = (data) => {
+    const errors = {};
+    if (!data.type) errors.type = "Maintenance type is required";
+    if (!data.mileage || isNaN(data.mileage))
+      errors.mileage = "Mileage is required. No commas.";
+    if (!data.serviceDate || !dayjs(data.serviceDate).isValid())
+      errors.serviceDate = "Service date is required";
+    if (!data.city) errors.city = "City is required";
+    if (!data.state) errors.state = "State is required";
+    return errors;
+  };
+
   const handleChange = (field) => (event, value) => {
     setMaintenanceData({
       ...maintenanceData,
       [field]: value !== undefined ? value : event.target.value,
     });
+    if (formErrors[field]) {
+      const newErrors = { ...formErrors };
+      delete newErrors[field];
+      setFormErrors(newErrors);
+      console.log(newErrors);
+    }
+  };
+
+  const handleInputChange = (event, newInputValue) => {
+    setMaintenanceData({
+      ...maintenanceData,
+      type: newInputValue,
+    });
+    if (formErrors["type"]) {
+      const newErrors = { ...formErrors };
+      delete newErrors["type"];
+      setFormErrors(newErrors);
+    }
   };
 
   const handleDateChange = (date) => {
@@ -27,10 +60,20 @@ function MaintenanceForm() {
       ...maintenanceData,
       serviceDate: date ? date.format("YYYY-MM-DD") : "",
     });
+    if (formErrors["serviceDate"]) {
+      const newErrors = { ...formErrors };
+      delete newErrors["serviceDate"];
+      setFormErrors(newErrors);
+    }
   };
 
   const handleSubmit = () => {
-    console.log(maintenanceData);
+    const validationErrors = validateForm(maintenanceData);
+    setFormErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      console.log(maintenanceData);
+    }
   };
 
   return (
@@ -39,18 +82,21 @@ function MaintenanceForm() {
         {/* Maintenance type */}
         <Grid item xs={12}>
           <Autocomplete
+            freeSolo
             disablePortal
             id="maintenance-type-combo-box"
             data-testid="maintenance-type-combo-box"
             options={maintenanceTypes}
             value={maintenanceData.type}
-            onChange={handleChange("type")}
+            onInputChange={handleInputChange}
             renderInput={(params) => (
               <TextField
                 {...params}
                 label="Maintenance Type"
                 required
                 fullWidth
+                error={!!formErrors.type}
+                helperText={formErrors.type}
               />
             )}
           />
@@ -65,6 +111,8 @@ function MaintenanceForm() {
             onChange={handleChange("mileage")}
             required
             fullWidth
+            error={!!formErrors.mileage}
+            helperText={formErrors.mileage}
           />
         </Grid>
 
@@ -86,6 +134,8 @@ function MaintenanceForm() {
                 variant: "outlined",
                 id: "service-date",
                 name: "serviceDate",
+                error: !!formErrors.serviceDate,
+                helperText: formErrors.serviceDate,
               },
             }}
           />
@@ -100,6 +150,8 @@ function MaintenanceForm() {
             onChange={handleChange("city")}
             required
             fullWidth
+            error={!!formErrors.city}
+            helperText={formErrors.city}
           />
         </Grid>
 
@@ -112,6 +164,8 @@ function MaintenanceForm() {
             onChange={handleChange("state")}
             required
             fullWidth
+            error={!!formErrors.state}
+            helperText={formErrors.state}
           />
         </Grid>
 
@@ -138,6 +192,7 @@ function MaintenanceForm() {
             onClick={handleSubmit}
             data-testid="submit-button"
             fullWidth
+            disabled={Object.keys(formErrors).length > 0}
           >
             Submit
           </Button>
