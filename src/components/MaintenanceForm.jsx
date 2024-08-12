@@ -39,7 +39,6 @@ function MaintenanceForm() {
       const newErrors = { ...formErrors };
       delete newErrors[field];
       setFormErrors(newErrors);
-      console.log(newErrors);
     }
   };
 

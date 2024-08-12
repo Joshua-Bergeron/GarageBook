@@ -18,15 +18,39 @@ function NewVehicleForm() {
     color: null,
   });
 
+  const [formErrors, setFormErrors] = useState({});
+
+  const validateForm = (data) => {
+    const errors = {};
+    if (!data.make) errors.make = "Make is required";
+    if (!data.model) errors.model = "Model is required";
+    if (!data.year) errors.year = "Year is required";
+    if (!data.mileage || isNaN(data.mileage))
+      errors.mileage = "Mileage is required. No commas.";
+    if (!data.licensePlate) errors.licensePlate = "License Plate is required";
+    if (!data.color) errors.color = "Color is required";
+    return errors;
+  };
+
   const handleChange = (field) => (event, value) => {
     setVehicleData({
       ...vehicleData,
       [field]: value !== undefined ? value : event.target.value,
     });
+    if (formErrors[field]) {
+      const newErrors = { ...formErrors };
+      delete newErrors[field];
+      setFormErrors(newErrors);
+    }
   };
 
   function handleSubmit() {
-    console.log();
+    const validationErrors = validateForm(vehicleData);
+    setFormErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      console.log(vehicleData);
+    }
   }
 
   return (
@@ -43,7 +67,14 @@ function NewVehicleForm() {
           value={vehicleData.make}
           onChange={handleChange("make")}
           renderInput={(params) => (
-            <TextField {...params} label="Make" required fullWidth />
+            <TextField
+              {...params}
+              label="Make"
+              required
+              fullWidth
+              error={!!formErrors.make}
+              helperText={formErrors.make}
+            />
           )}
         />
       </Grid>
@@ -56,7 +87,14 @@ function NewVehicleForm() {
           value={vehicleData.model}
           onChange={handleChange("model")}
           renderInput={(params) => (
-            <TextField {...params} label="Model" required fullWidth />
+            <TextField
+              {...params}
+              label="Model"
+              required
+              fullWidth
+              error={!!formErrors.model}
+              helperText={formErrors.model}
+            />
           )}
         />
       </Grid>
@@ -69,7 +107,14 @@ function NewVehicleForm() {
           value={vehicleData.year}
           onChange={handleChange("year")}
           renderInput={(params) => (
-            <TextField {...params} label="Year" required fullWidth />
+            <TextField
+              {...params}
+              label="Year"
+              required
+              fullWidth
+              error={!!formErrors.year}
+              helperText={formErrors.year}
+            />
           )}
         />
       </Grid>
@@ -81,6 +126,8 @@ function NewVehicleForm() {
           onChange={handleChange("mileage")}
           required
           fullWidth
+          error={!!formErrors.mileage}
+          helperText={formErrors.mileage}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
@@ -91,6 +138,8 @@ function NewVehicleForm() {
           onChange={handleChange("licensePlate")}
           required
           fullWidth
+          error={!!formErrors.licensePlate}
+          helperText={formErrors.licensePlate}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
@@ -102,7 +151,14 @@ function NewVehicleForm() {
           value={vehicleData.color}
           onChange={handleChange("color")}
           renderInput={(params) => (
-            <TextField {...params} label="Color" required fullWidth />
+            <TextField
+              {...params}
+              label="Color"
+              required
+              fullWidth
+              error={!!formErrors.color}
+              helperText={formErrors.color}
+            />
           )}
         />
       </Grid>
@@ -112,6 +168,7 @@ function NewVehicleForm() {
           sx={{ width: 300 }}
           onClick={handleSubmit}
           data-testid="submit-button"
+          disabled={Object.keys(formErrors).length > 0}
         >
           Submit
         </Button>
