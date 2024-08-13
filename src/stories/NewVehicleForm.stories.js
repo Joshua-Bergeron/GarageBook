@@ -1,7 +1,7 @@
 import NewVehicleForm from "@/components/NewVehicleForm";
 
 export default {
-  title: "NewVehicleForm",
+  title: "New Vehicle Form",
   component: NewVehicleForm,
 };
 

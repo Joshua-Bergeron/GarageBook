@@ -1,7 +1,7 @@
 import GarageHeader from "@/components/GarageHeader";
 
 export default {
-  title: "GarageHeader",
+  title: "Garage Header",
   component: GarageHeader,
 };
 

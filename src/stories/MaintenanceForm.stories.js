@@ -1,7 +1,7 @@
 import MaintenanceForm from "@/components/MaintenanceForm";
 
 export default {
-  title: "MaintenanceForm",
+  title: "Maintenance Form",
   component: MaintenanceForm,
 };
 
