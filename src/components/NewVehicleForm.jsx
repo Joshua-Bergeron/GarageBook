@@ -45,6 +45,7 @@ function NewVehicleForm() {
   };
 
   function handleSubmit() {
+    console.log("");
     const validationErrors = validateForm(vehicleData);
     setFormErrors(validationErrors);
 

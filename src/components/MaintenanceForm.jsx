@@ -67,6 +67,7 @@ function MaintenanceForm() {
   };
 
   const handleSubmit = () => {
+    console.log("");
     const validationErrors = validateForm(maintenanceData);
     setFormErrors(validationErrors);
 
