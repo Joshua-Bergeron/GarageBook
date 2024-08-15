@@ -1,5 +1,5 @@
 import ServiceHistory from "@/components/ServiceHistory";
-import { serviceHistory } from "@/mocks/vehicleData";
+import { serviceHistoryMock } from "@/mocks/vehicleMocks";
 
 export default {
   title: "Service History Table",
