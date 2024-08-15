@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import VehicleSummaryItem from "./VehicleSummaryItem";
 
-it("renders all data", () => {
+it("renders without crashing", () => {
   render(
     <VehicleSummaryItem
       make={"Toyota"}

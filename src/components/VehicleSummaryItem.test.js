@@ -2,6 +2,20 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import VehicleSummaryItem from "./VehicleSummaryItem";
 
+it("renders without crashing", () => {
+  render(
+    <VehicleSummaryItem
+      make={"Toyota"}
+      model={"Corolla"}
+      year={2003}
+      mileage={178234}
+      color={"White"}
+      lastServiceDate={"05/16/2024"}
+      lastServiceType={"Oil Change"}
+    />
+  );
+});
+
 it("renders all data", () => {
   render(
     <VehicleSummaryItem

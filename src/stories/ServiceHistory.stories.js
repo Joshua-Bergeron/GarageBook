@@ -8,6 +8,6 @@ export default {
 
 export const History = {
   args: {
-    serviceHistory: serviceHistory,
+    serviceHistory: serviceHistoryMock,
   },
 };

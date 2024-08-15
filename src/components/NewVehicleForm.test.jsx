@@ -11,6 +11,10 @@ import NewVehicleForm from "./NewVehicleForm";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+it("renders without crashing", () => {
+  render(<NewVehicleForm />);
+});
+
 it("renders all fields", () => {
   render(<NewVehicleForm />);
 

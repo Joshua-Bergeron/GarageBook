@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import GarageHeader from "./GarageHeader";
 
-it("renders the export and new vehicle buttons", () => {
+it("renders without crashing", () => {
   render(<GarageHeader />);
 
   expect(screen.getByText("My Garage")).toBeInTheDocument();

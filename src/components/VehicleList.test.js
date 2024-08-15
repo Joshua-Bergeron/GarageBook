@@ -3,6 +3,10 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import VehicleList from "./VehicleList";
 import { vehicleList } from "@/mocks/vehicleMocks";
 
+it("renders without crashing", () => {
+  render(<VehicleList vehicleList={vehicleList} />);
+});
+
 it("renders each vehicle summary item as a list", () => {
   render(<VehicleList vehicleList={vehicleList} />);
 

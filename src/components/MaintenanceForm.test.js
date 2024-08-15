@@ -8,6 +8,10 @@ import { expect } from "@jest/globals";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+it("renders without crashing", () => {
+  render(<MaintenanceForm />);
+});
+
 it("renders all fields", () => {
   render(<MaintenanceForm />);
 
