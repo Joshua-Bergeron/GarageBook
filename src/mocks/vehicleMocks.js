@@ -98,6 +98,7 @@ export const corolla = {
   color: "White",
   lastServiceDate: "05/16/2024",
   lastServiceType: "Oil Change",
+  licensePlate: "7JSN910",
 };
 
 export const corollaDetails = {

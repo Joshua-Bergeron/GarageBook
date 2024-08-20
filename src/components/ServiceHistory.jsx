@@ -20,7 +20,7 @@ export default function ServiceHistory({ serviceHistory }) {
         <TableHead>
           <TableRow
             style={{
-              backgroundColor: theme.palette.primary.main,
+              backgroundColor: "#414a4c",
               position: "sticky",
               top: 0,
               zIndex: 1,
