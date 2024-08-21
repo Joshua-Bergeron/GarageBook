@@ -12,18 +12,13 @@ import dayjs from "dayjs";
 import { grey } from "@mui/material/colors";
 
 export default function ServiceHistory({ serviceHistory }) {
-  const theme = useTheme();
-
   return (
-    <TableContainer sx={{ maxHeight: 450 }} component={Paper}>
+    <TableContainer sx={{ maxHeight: 500 }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="service history table">
         <TableHead>
           <TableRow
             style={{
               backgroundColor: "#414a4c",
-              position: "sticky",
-              top: 0,
-              zIndex: 1,
             }}
           >
             <TableCell sx={{ color: "white" }}>Service Type</TableCell>

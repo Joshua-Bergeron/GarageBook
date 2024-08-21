@@ -193,6 +193,7 @@ function MaintenanceForm() {
             data-testid="submit-button"
             fullWidth
             disabled={Object.keys(formErrors).length > 0}
+            sx={{ width: 300 }}
           >
             Submit
           </Button>
