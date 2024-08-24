@@ -18,7 +18,10 @@ export default function ServiceHistory({ serviceHistory }) {
         <TableHead>
           <TableRow
             style={{
-              backgroundColor: "#414a4c",
+              backgroundColor: "#495057",
+              position: "sticky",
+              top: 0,
+              zIndex: 1,
             }}
           >
             <TableCell sx={{ color: "white" }}>Service Type</TableCell>
