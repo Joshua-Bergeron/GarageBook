@@ -99,6 +99,7 @@ export const corolla = {
   lastServiceDate: "05/16/2024",
   lastServiceType: "Oil Change",
   licensePlate: "7JSN910",
+  vin: "00000000000000000",
 };
 
 export const corollaDetails = {
@@ -115,6 +116,7 @@ export const camry = {
   mileage: 78910,
   color: "Silver",
   lastServiceType: "",
+  vin: "00000000000000000",
 };
 
 export const vehicleList = [
@@ -124,6 +126,7 @@ export const vehicleList = [
     year: "2008",
     mileage: 84772,
     color: "Black",
+    vin: "00000000000000000",
   },
   {
     make: "Toyota",
@@ -133,6 +136,7 @@ export const vehicleList = [
     color: "White",
     lastServiceDate: "05/16/2024",
     lastServiceType: "Oil Change",
+    vin: "00000000000000000",
   },
   {
     make: "Honda",
@@ -142,5 +146,6 @@ export const vehicleList = [
     color: "Blue",
     lastServiceDate: "07/22/2024",
     lastServiceType: "New Air Filter",
+    vin: "00000000000000000",
   },
 ];

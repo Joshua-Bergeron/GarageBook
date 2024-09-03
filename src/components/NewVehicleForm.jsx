@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { carMakes, carModels, carColors } from "@/mocks/vehicleData";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { calculateYears } from "@/utils/calculateYears";
 
 function NewVehicleForm() {
@@ -16,19 +16,22 @@ function NewVehicleForm() {
     mileage: "",
     licensePlate: "",
     color: null,
+    vin: "",
   });
 
   const [formErrors, setFormErrors] = useState({});
 
   const validateForm = (data) => {
     const errors = {};
-    if (!data.make) errors.make = "Make is required";
-    if (!data.model) errors.model = "Model is required";
-    if (!data.year) errors.year = "Year is required";
+    if (!data.make) errors.make = "Make is required.";
+    if (!data.model) errors.model = "Model is required.";
+    if (!data.year) errors.year = "Year is required.";
     if (!data.mileage || isNaN(data.mileage))
       errors.mileage = "Mileage is required. No commas.";
-    if (!data.licensePlate) errors.licensePlate = "License Plate is required";
-    if (!data.color) errors.color = "Color is required";
+    if (!data.licensePlate) errors.licensePlate = "License Plate is required.";
+    if (!data.color) errors.color = "Color is required.";
+    if (!data.vin || data.vin.length != 17)
+      errors.vin = "VIN is required and must be 17 characters long.";
     return errors;
   };
 
@@ -56,6 +59,31 @@ function NewVehicleForm() {
 
   return (
     <Grid container spacing={3} justifyContent="center">
+      <Grid item xs={12}>
+        <Typography
+          variant="h5"
+          sx={{
+            textAlign: "center",
+            fontWeight: 500,
+            color: "#555",
+          }}
+        >
+          Add New Vehicle
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12} sm={12} md={12}>
+        <TextField
+          label="VIN"
+          data-testid="vin-field"
+          value={vehicleData.vin}
+          onChange={handleChange("vin")}
+          required
+          fullWidth
+          error={!!formErrors.vin}
+          helperText={formErrors.vin}
+        />
+      </Grid>
       <Grid item xs={12} sm={6} md={4}>
         <Autocomplete
           disablePortal
@@ -166,7 +194,13 @@ function NewVehicleForm() {
       <Grid item xs={12} textAlign="center">
         <Button
           variant="contained"
-          sx={{ width: 300 }}
+          sx={{
+            width: 300,
+            backgroundColor: "#495057",
+            "&:hover": {
+              backgroundColor: "#808080",
+            },
+          }}
           onClick={handleSubmit}
           data-testid="submit-button"
           disabled={Object.keys(formErrors).length > 0}

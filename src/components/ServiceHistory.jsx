@@ -13,7 +13,7 @@ import { grey } from "@mui/material/colors";
 
 export default function ServiceHistory({ serviceHistory }) {
   return (
-    <TableContainer sx={{ maxHeight: 500 }} component={Paper}>
+    <TableContainer sx={{ maxHeight: 700 }} component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="service history table">
         <TableHead>
           <TableRow

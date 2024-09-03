@@ -3,6 +3,7 @@ import { Container, Typography, Button, Paper } from "@mui/material";
 import ServiceHistory from "./ServiceHistory";
 import dayjs from "dayjs";
 import ServiceSummary from "./ServiceSummary";
+import VehicleInformation from "./VehicleInformation";
 
 export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
   const handleAddMaintenance = () => {
@@ -14,14 +15,18 @@ export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
       <Typography variant="h4" gutterBottom align="left">
         {`${vehicle.year} ${vehicle.make} ${vehicle.model} - Service History`}
       </Typography>
+      <VehicleInformation
+        mileage={vehicle.mileage}
+        licensePlate={vehicle.licensePlate}
+        vin={vehicle.vin}
+      />
+
       <ServiceSummary
         lastServiceDate={dayjs(
           serviceHistory[serviceHistory.length - 1].serviceDate
         )}
         lastServiceType={serviceHistory[serviceHistory.length - 1].type}
         totalServices={serviceHistory.length}
-        mileage={vehicle.mileage}
-        licensePlate={vehicle.licensePlate}
       />
       <Button
         variant="contained"

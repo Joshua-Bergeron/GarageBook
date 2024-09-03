@@ -21,72 +21,59 @@ const VehicleSummaryItem = ({
   color = "Unknown",
   lastServiceDate,
   lastServiceType,
+  vin,
 }) => {
   function handleViewHistoryClick() {
-    console.log();
+    console.log("View Service History clicked");
   }
 
   function handleSettingsClick() {
-    console.log();
+    console.log("Settings clicked");
   }
 
   return (
-    <Paper
-      sx={{
-        p: 2,
-        backgroundColor: "#E8E8E8",
-        display: "flex",
-        flexDirection: { xs: "column", sm: "row" },
-        alignItems: "center",
-        gap: 3,
-      }}
-    >
-      <Avatar sx={{ width: 60, height: 60, fontSize: "1.5rem" }}>
-        {make.charAt(0)}
-      </Avatar>
-
-      <VehicleDetails make={make} model={model} year={year} color={color} />
-
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          flex: 2,
-          gap: 1,
-        }}
-      >
-        <Typography variant="body2" data-testid="mileage">
-          Mileage: {milesFormatter(mileage)} miles
-        </Typography>
-        {lastServiceDate && lastServiceType && (
-          <Typography variant="body2" data-testid="last-service">
-            Last Service: {lastServiceDate} - {lastServiceType}
+    <Paper sx={{ p: 2, backgroundColor: "#E8E8E8" }} elevation={4}>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={12} sm="auto">
+          <Avatar sx={{ width: 60, height: 60, fontSize: "1.5rem" }}>
+            {make.charAt(0)}
+          </Avatar>
+        </Grid>
+        <Grid item xs={12} sm>
+          <VehicleDetails make={make} model={model} year={year} color={color} />
+        </Grid>
+        <Grid item xs={12} sm>
+          <Typography variant="body2" data-testid="mileage">
+            Mileage: {milesFormatter(mileage)} miles
           </Typography>
-        )}
-      </Box>
+          {lastServiceDate && lastServiceType && (
+            <Typography variant="body2" data-testid="last-service">
+              Last Service: {lastServiceDate} - {lastServiceType}
+            </Typography>
+          )}
+        </Grid>
+        <Grid item xs={12} sm>
+          <Typography variant="body2" data-testid="vin">
+            VIN: {vin}
+          </Typography>
+        </Grid>
+      </Grid>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          gap: 1,
-          flex: 1,
-        }}
-      >
+      <Box display="flex" justifyContent="space-between" sx={{ mt: 2 }}>
         <Button
           variant="contained"
           fullWidth
           data-testid="history-button"
           onClick={handleViewHistoryClick}
+          sx={{ flex: 1, mr: 1 }}
         >
           View Service History
         </Button>
-
         <IconButton
           aria-label="settings"
           data-testid="settings-button"
           onClick={handleSettingsClick}
+          sx={{ flexShrink: 0 }}
         >
           <SettingsIcon />
         </IconButton>
