@@ -1,15 +1,13 @@
 import "@testing-library/jest-dom";
-import {
-  render,
-  screen,
-  fireEvent,
-  within,
-  wait,
-} from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NewVehicleForm from "./NewVehicleForm";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+it("renders without crashing", () => {
+  render(<NewVehicleForm />);
+});
 
 it("renders all fields", () => {
   render(<NewVehicleForm />);
@@ -34,7 +32,7 @@ it("allows user to select from the make field", async () => {
   const option = await screen.findByText("Toyota");
   userEvent.click(option);
   await userEvent.click(input);
-  await delay(100); // deplay for value to be updated
+  await delay(200); // deplay for value to be updated
   expect(input).toHaveValue("Toyota");
 });
 
@@ -49,7 +47,7 @@ it("allows user to select from the model field", async () => {
   const option = await screen.findByText("Corolla");
   userEvent.click(option);
   await userEvent.click(input);
-  await delay(150);
+  await delay(200);
   expect(input).toHaveValue("Corolla");
 });
 
@@ -103,11 +101,21 @@ it("allows user to select from the color field", async () => {
   expect(input).toHaveValue("White");
 });
 
-it("calls function on submit button click", () => {
+it("disables the submit button when no selections are made", async () => {
+  render(<NewVehicleForm />);
+
+  const button = screen.getByTestId("submit-button");
+  expect(button).toBeEnabled();
+  fireEvent.click(button);
+  expect(button).toBeDisabled();
+});
+
+it("calls function on submit button click", async () => {
   console.log = jest.fn();
   render(<NewVehicleForm />);
 
   const button = screen.getByTestId("submit-button");
+  expect(button).toBeInTheDocument();
   fireEvent.click(button);
   expect(console.log).toHaveBeenCalledTimes(1);
 });

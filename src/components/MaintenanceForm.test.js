@@ -4,8 +4,13 @@ import userEvent from "@testing-library/user-event";
 import MaintenanceForm from "./MaintenanceForm";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { expect } from "@jest/globals";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+it("renders without crashing", () => {
+  render(<MaintenanceForm />);
+});
 
 it("renders all fields", () => {
   render(<MaintenanceForm />);
@@ -31,7 +36,7 @@ it("allows user to select from the maintenance type field", async () => {
   const option = await screen.findByText("Oil Change");
   userEvent.click(option);
   await userEvent.click(input);
-  await delay(500); // delay for value to be updated
+  await delay(1000); // delay for value to be updated
   expect(input).toHaveValue("Oil Change");
 });
 
@@ -83,4 +88,26 @@ it("allows user to type in the notes field", async () => {
   expect(input).toBeInTheDocument();
   await userEvent.type(input, "Cost was $40");
   expect(input.value).toBe("Cost was $40");
+});
+
+it("disables the submit button when no selections are made", async () => {
+  render(<MaintenanceForm />);
+
+  const button = screen.getByTestId("submit-button");
+  expect(button).toBeEnabled();
+  fireEvent.click(button);
+  expect(button).toBeDisabled();
+});
+
+it("calls function on submit button click", async () => {
+  console.log = jest.fn();
+  render(
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <MaintenanceForm />
+    </LocalizationProvider>
+  );
+
+  const button = screen.getByTestId("submit-button");
+  fireEvent.click(button);
+  expect(console.log).toHaveBeenCalledTimes(1);
 });

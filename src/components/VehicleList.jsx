@@ -1,6 +1,6 @@
 import * as React from "react";
 import VehicleSummaryItem from "./VehicleSummaryItem";
-import { List, ListItem, Typography, Stack, Box } from "@mui/material";
+import { Typography, Stack, Box } from "@mui/material";
 
 function VehicleList({ vehicleList }) {
   return (
@@ -17,6 +17,7 @@ function VehicleList({ vehicleList }) {
               color={vehicle.color}
               lastServiceDate={vehicle.lastServiceDate}
               lastServiceType={vehicle.lastServiceType}
+              vin={vehicle.vin}
             />
           );
         })
@@ -26,6 +27,7 @@ function VehicleList({ vehicleList }) {
             color="text.secondary"
             align="center"
             sx={{ width: "100%" }}
+            variant="h6"
           >
             No Vehicles To Display
           </Typography>

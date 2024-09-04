@@ -3,12 +3,7 @@ import { Grid, Typography, Box } from "@mui/material";
 
 function VehicleDetails({ make, model, year, color }) {
   return (
-    <Box
-      sx={{
-        flexDirection: "column",
-        flex: 0.5,
-      }}
-    >
+    <>
       <Typography variant="h6" data-testid="make-model">
         {make} {model}
       </Typography>
@@ -19,7 +14,7 @@ function VehicleDetails({ make, model, year, color }) {
       >
         {year} - {color}
       </Typography>
-    </Box>
+    </>
   );
 }
 

@@ -24,8 +24,9 @@ function GarageHeader() {
       >
         <Button
           variant="outlined"
-          color="primary"
-          sx={{ mr: 1 }}
+          sx={{
+            mr: 1,
+          }}
           data-testid="export-button"
           onClick={handleExportClick}
         >

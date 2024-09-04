@@ -3,6 +3,10 @@ import { render, screen } from "@testing-library/react";
 import { vehicleList } from "@/mocks/vehicleMocks";
 import Garage from "./Garage";
 
+it("renders without crashing", () => {
+  render(<Garage vehicleList={vehicleList} />);
+});
+
 it("renders garage header and vehicle summary list", () => {
   render(<Garage vehicleList={vehicleList} />);
 

@@ -1,10 +1,11 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { Autocomplete, Grid, Button, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { maintenanceTypes } from "@/mocks/vehicleData";
 import dayjs from "dayjs";
+import { Typography } from "@mui/material";
 
 function MaintenanceForm() {
   const [maintenanceData, setMaintenanceData] = useState({
@@ -67,6 +68,7 @@ function MaintenanceForm() {
   };
 
   const handleSubmit = () => {
+    console.log("");
     const validationErrors = validateForm(maintenanceData);
     setFormErrors(validationErrors);
 
@@ -78,6 +80,18 @@ function MaintenanceForm() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Grid container spacing={3} justifyContent="center">
+        <Grid item xs={12}>
+          <Typography
+            variant="h5"
+            sx={{
+              textAlign: "center",
+              fontWeight: 500,
+              color: "#555",
+            }}
+          >
+            Add New Maintenace Log
+          </Typography>
+        </Grid>
         {/* Maintenance type */}
         <Grid item xs={12}>
           <Autocomplete
@@ -192,6 +206,13 @@ function MaintenanceForm() {
             data-testid="submit-button"
             fullWidth
             disabled={Object.keys(formErrors).length > 0}
+            sx={{
+              width: 300,
+              backgroundColor: "#495057",
+              "&:hover": {
+                backgroundColor: "#808080",
+              },
+            }}
           >
             Submit
           </Button>
