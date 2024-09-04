@@ -6,7 +6,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useTheme } from "@mui/material/styles";
 import milesFormatter from "@/utils/milesFormatter";
 import dayjs from "dayjs";
 import { grey } from "@mui/material/colors";

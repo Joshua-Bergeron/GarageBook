@@ -1,11 +1,5 @@
 import "@testing-library/jest-dom";
-import {
-  render,
-  screen,
-  fireEvent,
-  within,
-  wait,
-} from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NewVehicleForm from "./NewVehicleForm";
 

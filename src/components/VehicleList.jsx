@@ -1,6 +1,6 @@
 import * as React from "react";
 import VehicleSummaryItem from "./VehicleSummaryItem";
-import { List, ListItem, Typography, Stack, Box } from "@mui/material";
+import { Typography, Stack, Box } from "@mui/material";
 
 function VehicleList({ vehicleList }) {
   return (

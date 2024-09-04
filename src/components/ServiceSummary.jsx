@@ -1,6 +1,12 @@
 import React from "react";
-import { Typography, Card, CardContent, Divider, Box } from "@mui/material";
-import milesFormatter from "@/utils/milesFormatter";
+import {
+  Typography,
+  Card,
+  CardContent,
+  Divider,
+  Box,
+  Grid,
+} from "@mui/material";
 import dayjs from "dayjs";
 
 export default function ServiceSummary({
@@ -15,10 +21,18 @@ export default function ServiceSummary({
           Service Summary
         </Typography>
         <Divider sx={{ marginBottom: 1 }} />
-        <Box display="flex" justifyContent="space-between">
-          <Typography variant="body2">{`Last Service Date: ${dayjs(lastServiceDate).format("MM/DD/YYYY")}`}</Typography>
-          <Typography variant="body2">{`Last Service Type: ${lastServiceType}`}</Typography>
-          <Typography variant="body2">{`Total Services: ${totalServices}`}</Typography>
+        <Box display="flex" justifyContent="flex-start">
+          <Grid container spacing={2} sx={{ flexGrow: 1 }}>
+            <Grid item xs>
+              <Typography variant="body2">{`Last Service Date: ${dayjs(lastServiceDate).format("MM/DD/YYYY")}`}</Typography>
+            </Grid>
+            <Grid item xs>
+              <Typography variant="body2">{`Last Service Type: ${lastServiceType}`}</Typography>
+            </Grid>
+            <Grid item xs>
+              <Typography variant="body2">{`Total Services: ${totalServices}`}</Typography>
+            </Grid>
+          </Grid>
         </Box>
       </CardContent>
     </Card>

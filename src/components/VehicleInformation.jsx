@@ -1,16 +1,15 @@
 import React from "react";
-import { Typography, Card, CardContent, Divider, Box } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardContent,
+  Divider,
+  Box,
+  Grid,
+} from "@mui/material";
 import milesFormatter from "@/utils/milesFormatter";
-import dayjs from "dayjs";
 
-export default function VehicleInformation({
-  make,
-  model,
-  year,
-  mileage,
-  licensePlate,
-  vin,
-}) {
+export default function VehicleInformation({ mileage, licensePlate, vin }) {
   return (
     <Card elevation={2} sx={{ marginBottom: 2 }}>
       <CardContent>
@@ -18,10 +17,18 @@ export default function VehicleInformation({
           Vehicle Information
         </Typography>
         <Divider sx={{ marginBottom: 1 }} />
-        <Box display="flex" justifyContent="space-between">
-          <Typography variant="body2">{`Current Mileage: ${milesFormatter(mileage)}`}</Typography>
-          <Typography variant="body2">{`License Plate: ${licensePlate}`}</Typography>
-          <Typography variant="body2">{`VIN: ${vin}`}</Typography>
+        <Box display="flex" justifyContent="flex-start">
+          <Grid container spacing={2} sx={{ flexGrow: 1 }}>
+            <Grid item xs>
+              <Typography variant="body2">{`Current Mileage: ${milesFormatter(mileage)}`}</Typography>
+            </Grid>
+            <Grid item xs>
+              <Typography variant="body2">{`License Plate: ${licensePlate}`}</Typography>
+            </Grid>
+            <Grid item xs>
+              <Typography variant="body2">{`VIN: ${vin}`}</Typography>
+            </Grid>
+          </Grid>
         </Box>
       </CardContent>
     </Card>
