@@ -47,7 +47,7 @@ function NavigationBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <GarageIcon sx={{ mr: 1 }} />
+          <GarageIcon sx={{ mr: 1 }} data-testid="garage-icon" />
           <Typography
             variant="h6"
             noWrap
@@ -60,6 +60,7 @@ function NavigationBar() {
               color: "inherit",
               textDecoration: "none",
             }}
+            data-testid="title-text"
           >
             GarageBook
           </Typography>
@@ -68,6 +69,7 @@ function NavigationBar() {
             {pages.map((page) => (
               <Button
                 key={page}
+                data-testid={`${page.toLowerCase()}-link`}
                 onClick={() => handleNavigate(page)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
@@ -79,7 +81,7 @@ function NavigationBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar />
+                <Avatar data-testid="avatar-icon" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -91,6 +93,7 @@ function NavigationBar() {
                 <MenuItem
                   key={setting}
                   onClick={() => handleUserMenuClick(setting)}
+                  data-testid={`${setting.toLowerCase()}-link`}
                 >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
