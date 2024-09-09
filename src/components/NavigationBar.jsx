@@ -51,8 +51,6 @@ function NavigationBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="#"
             sx={{
               mr: 2,
               fontWeight: 700,
