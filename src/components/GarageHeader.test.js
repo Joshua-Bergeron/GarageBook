@@ -5,7 +5,7 @@ import GarageHeader from "./GarageHeader";
 it("renders without crashing", () => {
   render(<GarageHeader />);
 
-  expect(screen.getByText("My Garage")).toBeInTheDocument();
+  expect(screen.getByText("MY GARAGE")).toBeInTheDocument();
   expect(screen.getByTestId("export-button")).toBeInTheDocument();
   expect(screen.getByTestId("new-vehicle-button")).toBeInTheDocument();
 });

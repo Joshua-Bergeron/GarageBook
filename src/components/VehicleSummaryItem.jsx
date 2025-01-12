@@ -65,7 +65,7 @@ const VehicleSummaryItem = ({
           fullWidth
           data-testid="history-button"
           onClick={handleViewHistoryClick}
-          sx={{ flex: 1, mr: 1 }}
+          sx={{ flex: 1, mr: 1, backgroundColor: "#3c4463" }}
         >
           View Service History
         </Button>

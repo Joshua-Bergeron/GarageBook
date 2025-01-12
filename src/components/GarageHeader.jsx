@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Box, Typography, Stack, Button } from "@mui/material";
 
@@ -12,8 +13,8 @@ function GarageHeader() {
 
   return (
     <Stack direction="row" width="100%" mb={2} alignItems="center">
-      <Typography variant="h4" align="left" sx={{ flexGrow: 1 }}>
-        My Garage
+      <Typography variant="h5" align="left" sx={{ flexGrow: 1 }}>
+        MY GARAGE
       </Typography>
       <Box
         sx={{
@@ -26,6 +27,7 @@ function GarageHeader() {
           variant="outlined"
           sx={{
             mr: 1,
+            color: "#3c4463",
           }}
           data-testid="export-button"
           onClick={handleExportClick}
@@ -36,6 +38,10 @@ function GarageHeader() {
           variant="contained"
           data-testid="new-vehicle-button"
           onClick={handleNewVehicleClick}
+          sx={{
+            mr: 1,
+            backgroundColor: "#3c4463",
+          }}
         >
           Add New Vehicle
         </Button>

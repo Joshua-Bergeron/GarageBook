@@ -3,6 +3,15 @@ import { render, screen, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NavigationBar from "./NavigationBar";
 
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      prefetch: () => null,
+      push: () => null,
+    };
+  },
+}));
+
 it("renders without crashing", () => {
   render(<NavigationBar />);
 });
