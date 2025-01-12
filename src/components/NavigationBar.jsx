@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
@@ -12,11 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import GarageIcon from "@mui/icons-material/Garage";
+import { useRouter } from "next/navigation";
 
 const pages = ["Vehicles"];
 const settings = ["Account", "Logout"];
 
 function NavigationBar() {
+  const router = useRouter();
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -40,11 +43,12 @@ function NavigationBar() {
   const handleNavigate = (page) => {
     if (page === "Vehicles") {
       console.log("vehicles");
+      router.push("/");
     }
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ mb: 3, backgroundColor: "#3c4463" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <GarageIcon sx={{ mr: 1 }} data-testid="garage-icon" />

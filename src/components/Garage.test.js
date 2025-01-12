@@ -2,6 +2,15 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { vehicleList } from "@/mocks/vehicleMocks";
 import Garage from "./Garage";
+import { useRouter } from "next/router";
+
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      prefetch: () => null,
+    };
+  },
+}));
 
 it("renders without crashing", () => {
   render(<Garage vehicleList={vehicleList} />);
@@ -10,7 +19,7 @@ it("renders without crashing", () => {
 it("renders garage header and vehicle summary list", () => {
   render(<Garage vehicleList={vehicleList} />);
 
-  expect(screen.getByText("My Garage")).toBeInTheDocument();
+  expect(screen.getByText("MY GARAGE")).toBeInTheDocument();
   expect(screen.getByTestId("export-button")).toBeInTheDocument();
   expect(screen.getByTestId("new-vehicle-button")).toBeInTheDocument();
 
