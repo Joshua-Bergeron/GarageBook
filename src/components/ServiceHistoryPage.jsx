@@ -4,6 +4,7 @@ import ServiceHistory from "./ServiceHistory";
 import dayjs from "dayjs";
 import ServiceSummary from "./ServiceSummary";
 import VehicleInformation from "./VehicleInformation";
+import NavigationBar from "./NavigationBar";
 
 export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
   const handleAddMaintenance = () => {
@@ -11,41 +12,44 @@ export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ paddingTop: 4 }}>
-      <Typography variant="h4" gutterBottom align="left">
-        {`${vehicle.year} ${vehicle.make} ${vehicle.model} - Service History`}
-      </Typography>
-      <VehicleInformation
-        mileage={vehicle.mileage}
-        licensePlate={vehicle.licensePlate}
-        vin={vehicle.vin}
-      />
+    <>
+      <NavigationBar />
+      <Container maxWidth="lg" sx={{ paddingTop: 4 }}>
+        <Typography variant="h4" gutterBottom align="left">
+          {`${vehicle.year} ${vehicle.make} ${vehicle.model} - Service History`}
+        </Typography>
+        <VehicleInformation
+          mileage={vehicle.mileage}
+          licensePlate={vehicle.licensePlate}
+          vin={vehicle.vin}
+        />
 
-      <ServiceSummary
-        lastServiceDate={dayjs(
-          serviceHistory[serviceHistory.length - 1].serviceDate
-        )}
-        lastServiceType={serviceHistory[serviceHistory.length - 1].type}
-        totalServices={serviceHistory.length}
-      />
-      <Button
-        variant="contained"
-        sx={{
-          marginBottom: 2,
-          backgroundColor: "#495057",
-          "&:hover": {
-            backgroundColor: "#808080",
-          },
-        }}
-        onClick={handleAddMaintenance}
-        fullWidth
-        data-testid="add-button"
-      >
-        Add Maintenance
-      </Button>
-      <Paper elevation={4}>
-        <ServiceHistory serviceHistory={serviceHistory} />
-      </Paper>
-    </Container>
+        <ServiceSummary
+          lastServiceDate={dayjs(
+            serviceHistory[serviceHistory.length - 1].serviceDate
+          )}
+          lastServiceType={serviceHistory[serviceHistory.length - 1].type}
+          totalServices={serviceHistory.length}
+        />
+        <Button
+          variant="contained"
+          sx={{
+            marginBottom: 2,
+            backgroundColor: "#495057",
+            "&:hover": {
+              backgroundColor: "#808080",
+            },
+          }}
+          onClick={handleAddMaintenance}
+          fullWidth
+          data-testid="add-button"
+        >
+          Add Maintenance
+        </Button>
+        <Paper elevation={4}>
+          <ServiceHistory serviceHistory={serviceHistory} />
+        </Paper>
+      </Container>
+    </>
   );
 }

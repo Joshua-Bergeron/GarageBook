@@ -91,6 +91,7 @@ export const serviceHistoryMock = [
 ];
 
 export const corolla = {
+  id: 1,
   make: "Toyota",
   model: "Corolla",
   year: 2003,
@@ -110,6 +111,7 @@ export const corollaDetails = {
 };
 
 export const camry = {
+  id: 4,
   make: "Toyota",
   model: "Camry",
   year: 2017,
@@ -121,6 +123,7 @@ export const camry = {
 
 export const vehicleList = [
   {
+    id: 0,
     make: "BMW",
     model: "Z4",
     year: "2008",
@@ -129,6 +132,7 @@ export const vehicleList = [
     vin: "00000000000000000",
   },
   {
+    id: 1,
     make: "Toyota",
     model: "Corolla",
     year: "2003",
@@ -139,6 +143,7 @@ export const vehicleList = [
     vin: "00000000000000000",
   },
   {
+    id: 2,
     make: "Honda",
     model: "Civic",
     year: "2023",

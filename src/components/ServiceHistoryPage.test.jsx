@@ -5,6 +5,15 @@ import dayjs from "dayjs";
 import { serviceHistoryMock } from "@/mocks/vehicleMocks";
 import { corolla } from "@/mocks/vehicleMocks";
 import milesFormatter from "@/utils/milesFormatter";
+import { useRouter } from "next/navigation";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
+
+useRouter.mockImplementation(() => ({
+  push: jest.fn(),
+}));
 
 it("renders without crashing", () => {
   render(
