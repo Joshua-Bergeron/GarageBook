@@ -5,10 +5,6 @@ import { corolla, camry } from "@/mocks/vehicleMocks";
 export default {
   title: "Vehicle Summary Item",
   component: VehicleSummaryItem,
-  // parameters: {
-  //   layout: "centered",
-  // },
-  // tags: ["autodocs"],
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
