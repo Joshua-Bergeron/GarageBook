@@ -43,7 +43,7 @@ function NavigationBar() {
   const handleNavigate = (page) => {
     if (page === "Vehicles") {
       console.log("vehicles");
-      router.push("/");
+      router.push("/dashboard");
     }
   };
 

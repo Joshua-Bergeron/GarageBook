@@ -12,8 +12,10 @@ import {
 import SettingsIcon from "@mui/icons-material/Settings";
 import milesFormatter from "@/utils/milesFormatter";
 import VehicleDetails from "./VehicleDetails";
+import { useRouter } from "next/navigation";
 
 const VehicleSummaryItem = ({
+  id,
   make = "Unknown",
   model = "Unknown",
   year = "Unknown",
@@ -23,8 +25,10 @@ const VehicleSummaryItem = ({
   lastServiceType,
   vin,
 }) => {
+  const router = useRouter();
   function handleViewHistoryClick() {
-    console.log("View Service History clicked");
+    console.log(`id: ${id}`);
+    router.push(`/serviceHistory/${id}`);
   }
 
   function handleSettingsClick() {
