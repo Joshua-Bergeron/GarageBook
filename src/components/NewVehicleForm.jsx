@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { useState, useMemo } from "react";
 import TextField from "@mui/material/TextField";
@@ -6,7 +7,7 @@ import { carMakes, carModels, carColors } from "@/mocks/vehicleData";
 import { Button, Grid, Typography } from "@mui/material";
 import { calculateYears } from "@/utils/calculateYears";
 
-function NewVehicleForm() {
+function NewVehicleForm({ onCancel }) {
   const years = useMemo(() => calculateYears(), []);
 
   const [vehicleData, setVehicleData] = useState({
@@ -59,19 +60,6 @@ function NewVehicleForm() {
 
   return (
     <Grid container spacing={3} justifyContent="center">
-      <Grid item xs={12}>
-        <Typography
-          variant="h5"
-          sx={{
-            textAlign: "center",
-            fontWeight: 500,
-            color: "#555",
-          }}
-        >
-          Add New Vehicle
-        </Typography>
-      </Grid>
-
       <Grid item xs={12} sm={12} md={12}>
         <TextField
           label="VIN"
@@ -191,7 +179,22 @@ function NewVehicleForm() {
           )}
         />
       </Grid>
-      <Grid item xs={12} textAlign="center">
+      <Grid item xs={12} textAlign="center" spacing={4}>
+        <Button
+          variant="outlined"
+          sx={{
+            width: 300,
+            color: "#495057",
+            "&:hover": {
+              backgroundColor: "#f0f0f0",
+            },
+            marginRight: 2,
+          }}
+          onClick={onCancel}
+          data-testid="cancel-button"
+        >
+          Cancel
+        </Button>
         <Button
           variant="contained"
           sx={{
@@ -200,6 +203,8 @@ function NewVehicleForm() {
             "&:hover": {
               backgroundColor: "#808080",
             },
+            marginRight: 2,
+            marginTop: 1,
           }}
           onClick={handleSubmit}
           data-testid="submit-button"

@@ -2,12 +2,8 @@
 import * as React from "react";
 import { Box, Typography, Stack, Button } from "@mui/material";
 
-function GarageHeader() {
+function GarageHeader({ onNewVehicleClick }) {
   function handleExportClick() {
-    console.log();
-  }
-
-  function handleNewVehicleClick() {
     console.log();
   }
 
@@ -37,7 +33,7 @@ function GarageHeader() {
         <Button
           variant="contained"
           data-testid="new-vehicle-button"
-          onClick={handleNewVehicleClick}
+          onClick={onNewVehicleClick}
           sx={{
             mr: 1,
             backgroundColor: "#3c4463",
