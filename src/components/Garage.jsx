@@ -1,13 +1,10 @@
 "use client";
 import * as React from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Modal, Typography, Paper } from "@mui/material";
 import VehicleList from "./VehicleList";
 import GarageHeader from "./GarageHeader";
 import NavigationBar from "./NavigationBar";
 import NewVehicleForm from "./NewVehicleForm";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 
 function Garage({ vehicleList }) {
   const [showNewVehicleForm, setShowNewVehicleForm] = React.useState(false);
@@ -27,17 +24,41 @@ function Garage({ vehicleList }) {
         <GarageHeader onNewVehicleClick={handleNewVehicleClick} />
         <VehicleList vehicleList={vehicleList} />
       </Container>
-      <Dialog
+      <Modal
         open={showNewVehicleForm}
         onClose={handleClose}
-        fullWidth
-        maxWidth="md"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        BackdropProps={{
+          onClick: (event) => event.stopPropagation(),
+        }}
       >
-        <DialogTitle>Add New Vehicle</DialogTitle>
-        <DialogContent>
-          <NewVehicleForm onCancel={handleClose} />
-        </DialogContent>
-      </Dialog>
+        <Paper
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "80%",
+            maxWidth: "md",
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Typography
+            id="modal-title"
+            variant="h6"
+            component="h2"
+            sx={{ textAlign: "center" }}
+          >
+            Add New Vehicle
+          </Typography>
+          <Box id="modal-description" sx={{ mt: 2 }}>
+            <NewVehicleForm onCancel={handleClose} />
+          </Box>
+        </Paper>
+      </Modal>
     </>
   );
 }

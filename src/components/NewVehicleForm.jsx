@@ -204,6 +204,7 @@ function NewVehicleForm({ onCancel }) {
               backgroundColor: "#808080",
             },
             marginRight: 2,
+            marginTop: 1,
           }}
           onClick={handleSubmit}
           data-testid="submit-button"
