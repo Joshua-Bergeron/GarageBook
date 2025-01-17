@@ -7,7 +7,7 @@ import { maintenanceTypes } from "@/mocks/vehicleData";
 import dayjs from "dayjs";
 import { Typography } from "@mui/material";
 
-function MaintenanceForm() {
+function MaintenanceForm({ handleClose }) {
   const [maintenanceData, setMaintenanceData] = useState({
     type: null,
     mileage: "",
@@ -68,13 +68,14 @@ function MaintenanceForm() {
   };
 
   const handleSubmit = () => {
-    console.log("");
     const validationErrors = validateForm(maintenanceData);
     setFormErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
       console.log(maintenanceData);
     }
+
+    handleClose();
   };
 
   return (
@@ -89,7 +90,7 @@ function MaintenanceForm() {
               color: "#555",
             }}
           >
-            Add New Maintenace Log
+            Add New Maintenance Log
           </Typography>
         </Grid>
         {/* Maintenance type */}
@@ -200,6 +201,18 @@ function MaintenanceForm() {
 
         {/* Submit button */}
         <Grid item xs={12} textAlign="center">
+          <Button
+            variant="outlined"
+            onClick={handleClose}
+            data-testid="cancel-button"
+            fullWidth
+            sx={{
+              width: 300,
+              marginRight: 4,
+            }}
+          >
+            Cancel
+          </Button>
           <Button
             variant="contained"
             onClick={handleSubmit}

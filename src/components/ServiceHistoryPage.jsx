@@ -1,15 +1,23 @@
 import React from "react";
-import { Container, Typography, Button, Paper } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Button,
+  Paper,
+  Modal,
+  Box,
+} from "@mui/material";
 import ServiceHistory from "./ServiceHistory";
 import dayjs from "dayjs";
 import ServiceSummary from "./ServiceSummary";
 import VehicleInformation from "./VehicleInformation";
 import NavigationBar from "./NavigationBar";
+import MaintenanceForm from "./MaintenanceForm";
 
 export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
-  const handleAddMaintenance = () => {
-    console.log();
-  };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -40,7 +48,7 @@ export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
               backgroundColor: "#808080",
             },
           }}
-          onClick={handleAddMaintenance}
+          onClick={handleOpen}
           fullWidth
           data-testid="add-button"
         >
@@ -49,6 +57,22 @@ export default function ServiceHistoryPage({ vehicle, serviceHistory }) {
         <Paper elevation={4}>
           <ServiceHistory serviceHistory={serviceHistory} />
         </Paper>
+        <Modal open={open} onClose={handleClose}>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "background.paper",
+              boxShadow: 24,
+              minWidth: 700,
+              p: 4,
+            }}
+          >
+            <MaintenanceForm handleClose={handleClose} />
+          </Box>
+        </Modal>
       </Container>
     </>
   );

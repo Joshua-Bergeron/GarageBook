@@ -130,6 +130,7 @@ export const vehicleList = [
     mileage: 84772,
     color: "Black",
     vin: "00000000000000000",
+    licensePlate: "91HM210",
   },
   {
     id: 1,
@@ -141,6 +142,7 @@ export const vehicleList = [
     lastServiceDate: "05/16/2024",
     lastServiceType: "Oil Change",
     vin: "00000000000000000",
+    licensePlate: "7JSN910",
   },
   {
     id: 2,
@@ -152,5 +154,6 @@ export const vehicleList = [
     lastServiceDate: "07/22/2024",
     lastServiceType: "New Air Filter",
     vin: "00000000000000000",
+    licensePlate: "KJHJ123",
   },
 ];
